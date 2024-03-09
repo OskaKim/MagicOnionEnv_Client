@@ -1,12 +1,10 @@
 {
-    "name": "Applications",
+    "name": "Logics",
     "rootNamespace": "",
     "references": [
-        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
+        "GUID:a3d1ea7d43e24994f9a99ddcb74e5ede",
         "GUID:560b04d1a97f54a4e82edc0cbbb69285",
-        "GUID:f51ebe6a0ceec4240a699833d6309b23",
-        "GUID:f7014198ed8e4bf47b59164b5f314cd2",
-        "GUID:a3d1ea7d43e24994f9a99ddcb74e5ede"
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

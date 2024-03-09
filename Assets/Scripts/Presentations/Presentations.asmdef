@@ -1,12 +1,17 @@
 {
-    "name": "Applications",
+    "name": "Presentations",
     "rootNamespace": "",
     "references": [
         "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
         "GUID:560b04d1a97f54a4e82edc0cbbb69285",
         "GUID:f51ebe6a0ceec4240a699833d6309b23",
-        "GUID:f7014198ed8e4bf47b59164b5f314cd2",
-        "GUID:a3d1ea7d43e24994f9a99ddcb74e5ede"
+        "GUID:593a5b492d29ac6448b1ebf7f035ef33",
+        "GUID:84651a3751eca9349aac36a66bba901b",
+        "GUID:9e24947de15b9834991c9d8411ea37cf",
+        "GUID:69448af7b92c7f342b298e06a37122aa",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:a3d1ea7d43e24994f9a99ddcb74e5ede",
+        "GUID:0125e4e19ee06b04c815fffd90552ad7"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

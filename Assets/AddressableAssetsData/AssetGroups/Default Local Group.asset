@@ -16,7 +16,17 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: e713d181c6dfeb144849c95f7807d816
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: b41c80f2da3f6ae44a2e5a22aa2083d2
+    m_Address: Assets/ExternalResources/Sample/Character.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f4278118d513dd542948806c44a29b13
+    m_Address: Assets/ExternalResources/Sample/CharacterUI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: ff34c9f440afa2448a2c1c8ee80b70de, type: 2}
   m_SchemaSet:
