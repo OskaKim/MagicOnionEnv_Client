@@ -1,5 +1,7 @@
 ﻿using OskaKim.Applications.State;
 using OskaKim.Applications.State.Runner;
+using OskaKim.GameData.Sample.Sea.Ship;
+using OskaKim.Logics.Sample.Sea;
 using VContainer;
 using VContainer.Unity;
 
@@ -36,6 +38,8 @@ namespace OskaKim.Applications.Sample.Sea
         private void RegisterBuildInfo(IContainerBuilder builder)
         {
             builder.Register<Ship.MyShipActionState>(Lifetime.Transient);
+            builder.Register<MyShipLogic>(Lifetime.Singleton);
+            builder.Register<ShipStatusDataRepository>(Lifetime.Singleton);
         }
     }
 }
