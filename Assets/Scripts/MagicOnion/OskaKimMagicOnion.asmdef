@@ -1,19 +1,13 @@
 {
-    "name": "Applications",
+    "name": "OskaKimMagicOnion",
     "rootNamespace": "",
     "references": [
-        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
-        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
-        "GUID:f51ebe6a0ceec4240a699833d6309b23",
-        "GUID:f7014198ed8e4bf47b59164b5f314cd2",
-        "GUID:a3d1ea7d43e24994f9a99ddcb74e5ede",
-        "GUID:0125e4e19ee06b04c815fffd90552ad7",
-        "GUID:7a70f707410d78342b6033d9a56d79d0",
-        "GUID:350d0af80fb7b7947a59de66ab477547",
         "GUID:ccdb2a3bafe19b34792bb6e19521813e",
+        "GUID:350d0af80fb7b7947a59de66ab477547",
         "GUID:62b9d94cd08d5d047b266d42e8684cb8",
+        "GUID:075e4292b30a5014fa3dc1112ab1052b",
         "GUID:bbde805d927e795439d7a746d1749cab",
-        "GUID:6ce1aa23223730847b8da76aa26f47e1"
+        "GUID:5a46ad82eac024e4fbb6a0516a5def17"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

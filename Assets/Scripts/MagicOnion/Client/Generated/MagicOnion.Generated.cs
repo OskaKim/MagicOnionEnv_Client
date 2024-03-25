@@ -27,6 +27,7 @@ namespace MagicOnion
 
             StreamingHubClientRegistry<GameServer.Hubs.ICharaMoveHub, GameServer.Hubs.ICharaMoveHubReceiver>.Register((a, _, b, c, d, e) => new GameServer.Hubs.CharaMoveHubClient(a, b, c, d, e));
             StreamingHubClientRegistry<GameServer.Hubs.IChatAppHub, GameServer.Hubs.IChatAppHubReceiver>.Register((a, _, b, c, d, e) => new GameServer.Hubs.ChatAppHubClient(a, b, c, d, e));
+            StreamingHubClientRegistry<GameServer.Hubs.IShipHub, GameServer.Hubs.IShipHubReceiver>.Register((a, _, b, c, d, e) => new GameServer.Hubs.ShipHubClient(a, b, c, d, e));
         }
     }
 }
@@ -416,6 +417,130 @@ namespace GameServer.Hubs {
             }
 
             public global::GameServer.Hubs.IChatAppHub FireAndForget()
+            {
+                throw new NotSupportedException();
+            }
+
+            public Task DisposeAsync()
+            {
+                throw new NotSupportedException();
+            }
+
+            public Task WaitForDisconnect()
+            {
+                throw new NotSupportedException();
+            }
+
+            public global::System.Threading.Tasks.Task JoinAsync(string roomName, string userName)
+            {
+                return __parent.WriteMessageAsync<DynamicArgumentTuple<string, string>>(-733403293, new DynamicArgumentTuple<string, string>(roomName, userName));
+            }
+
+            public global::System.Threading.Tasks.Task LeaveAsync()
+            {
+                return __parent.WriteMessageAsync<Nil>(1368362116, Nil.Default);
+            }
+
+            public global::System.Threading.Tasks.Task SendMessageAsync(string userName, string message)
+            {
+                return __parent.WriteMessageAsync<DynamicArgumentTuple<string, string>>(-601690414, new DynamicArgumentTuple<string, string>(userName, message));
+            }
+
+        }
+    }
+
+    [Ignore]
+    public class ShipHubClient : StreamingHubClientBase<global::GameServer.Hubs.IShipHub, global::GameServer.Hubs.IShipHubReceiver>, global::GameServer.Hubs.IShipHub
+    {
+        static readonly Method<byte[], byte[]> method = new Method<byte[], byte[]>(MethodType.DuplexStreaming, "IShipHub", "Connect", MagicOnionMarshallers.ThroughMarshaller, MagicOnionMarshallers.ThroughMarshaller);
+
+        protected override Method<byte[], byte[]> DuplexStreamingAsyncMethod { get { return method; } }
+
+        readonly global::GameServer.Hubs.IShipHub __fireAndForgetClient;
+
+        public ShipHubClient(CallInvoker callInvoker, string host, CallOptions option, MessagePackSerializerOptions serializerOptions, IMagicOnionClientLogger logger)
+            : base(callInvoker, host, option, serializerOptions, logger)
+        {
+            this.__fireAndForgetClient = new FireAndForgetClient(this);
+        }
+        
+        public global::GameServer.Hubs.IShipHub FireAndForget()
+        {
+            return __fireAndForgetClient;
+        }
+
+        protected override void OnBroadcastEvent(int methodId, ArraySegment<byte> data)
+        {
+            switch (methodId)
+            {
+                case -1297457280: // OnJoin
+                {
+                    var result = MessagePackSerializer.Deserialize<string>(data, serializerOptions);
+                    receiver.OnJoin(result); break;
+                }
+                case 532410095: // OnLeave
+                {
+                    var result = MessagePackSerializer.Deserialize<string>(data, serializerOptions);
+                    receiver.OnLeave(result); break;
+                }
+                default:
+                    break;
+            }
+        }
+
+        protected override void OnResponseEvent(int methodId, object taskCompletionSource, ArraySegment<byte> data)
+        {
+            switch (methodId)
+            {
+                case -733403293: // JoinAsync
+                {
+                    var result = MessagePackSerializer.Deserialize<Nil>(data, serializerOptions);
+                    ((TaskCompletionSource<Nil>)taskCompletionSource).TrySetResult(result);
+                    break;
+                }
+                case 1368362116: // LeaveAsync
+                {
+                    var result = MessagePackSerializer.Deserialize<Nil>(data, serializerOptions);
+                    ((TaskCompletionSource<Nil>)taskCompletionSource).TrySetResult(result);
+                    break;
+                }
+                case -601690414: // SendMessageAsync
+                {
+                    var result = MessagePackSerializer.Deserialize<Nil>(data, serializerOptions);
+                    ((TaskCompletionSource<Nil>)taskCompletionSource).TrySetResult(result);
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+   
+        public global::System.Threading.Tasks.Task JoinAsync(string roomName, string userName)
+        {
+            return WriteMessageWithResponseAsync<DynamicArgumentTuple<string, string>, Nil>(-733403293, new DynamicArgumentTuple<string, string>(roomName, userName));
+        }
+
+        public global::System.Threading.Tasks.Task LeaveAsync()
+        {
+            return WriteMessageWithResponseAsync<Nil, Nil>(1368362116, Nil.Default);
+        }
+
+        public global::System.Threading.Tasks.Task SendMessageAsync(string userName, string message)
+        {
+            return WriteMessageWithResponseAsync<DynamicArgumentTuple<string, string>, Nil>(-601690414, new DynamicArgumentTuple<string, string>(userName, message));
+        }
+
+
+        class FireAndForgetClient : global::GameServer.Hubs.IShipHub
+        {
+            readonly ShipHubClient __parent;
+
+            public FireAndForgetClient(ShipHubClient parentClient)
+            {
+                this.__parent = parentClient;
+            }
+
+            public global::GameServer.Hubs.IShipHub FireAndForget()
             {
                 throw new NotSupportedException();
             }

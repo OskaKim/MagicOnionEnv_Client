@@ -21,7 +21,7 @@ namespace OskaKim.Presentations.Sample.Sea.Ship
 
         public void DestroyMyShip(MyShipView view)
         {
-            UnityEngine.Object.Destroy(view);
+            UnityEngine.Object.Destroy(view.gameObject);
         }
     }
 }

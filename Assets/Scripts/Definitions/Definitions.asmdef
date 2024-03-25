@@ -1,3 +1,17 @@
 {
-	"name": "Definitions"
+    "name": "Definitions",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ccdb2a3bafe19b34792bb6e19521813e",
+        "GUID:350d0af80fb7b7947a59de66ab477547"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

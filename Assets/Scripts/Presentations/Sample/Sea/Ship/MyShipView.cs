@@ -4,9 +4,14 @@ namespace OskaKim.Presentations.Sample.Sea.Ship
 {
     public class MyShipView : MonoBehaviour
     {
-        public void Translate(Vector3 translation)
+        public void Rotate(float rotationAmount)
         {
-            transform.Translate(translation);
+            transform.Rotate(Vector3.forward, -rotationAmount);
+        }
+
+        public void MoveForward(float deltaSpeed)
+        {
+            transform.Translate(Vector3.up * deltaSpeed);
         }
 
         public Vector3 GetPosition()

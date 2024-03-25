@@ -37,6 +37,7 @@ namespace OskaKim.Applications.Sample
         private void RegisterBuildInfo(IContainerBuilder builder)
         {
             builder.Register<SeaLoadingActionState>(Lifetime.Transient);
+            builder.Register<SeaFinishActionState>(Lifetime.Transient);
             builder.Register<SeaGroupState>(Lifetime.Transient);
             builder.Register<SeaPreloader>(Lifetime.Singleton);
         }

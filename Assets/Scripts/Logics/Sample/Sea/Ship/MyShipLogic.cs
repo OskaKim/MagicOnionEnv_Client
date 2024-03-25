@@ -13,7 +13,8 @@ namespace OskaKim.Logics.Sample.Sea
             _shipStatusDataRepository = shipStatusDataRepository;
         }
 
-        public float MoveShip()
+        // 이동거리 계산
+        public float CalcDeltaDistance()
         {
             if (Input.GetKey(KeyCode.W))
             {
@@ -28,9 +29,27 @@ namespace OskaKim.Logics.Sample.Sea
                 _shipStatusDataRepository.CurrentlySpeed = ApplyResistance(_shipStatusDataRepository.CurrentlySpeed, _shipStatusDataRepository.Resistance);
             }
 
+            _shipStatusDataRepository.CurrentlySpeed = Mathf.Clamp(_shipStatusDataRepository.CurrentlySpeed, -_shipStatusDataRepository.MaxSpeed, _shipStatusDataRepository.MaxSpeed);
             return _shipStatusDataRepository.CurrentlySpeed * Time.deltaTime;
         }
 
+        public float CalcDeltaRotateAmount()
+        {
+            float horizontalInput = Input.GetAxis("Horizontal");
+            if (horizontalInput != 0)
+            {
+                _shipStatusDataRepository.CurrentlyRotateSpeed += horizontalInput * _shipStatusDataRepository.RotateEnginePower;
+            }
+            else
+            {
+                _shipStatusDataRepository.CurrentlyRotateSpeed = 0;
+            }
+
+            _shipStatusDataRepository.CurrentlyRotateSpeed = Mathf.Clamp(_shipStatusDataRepository.CurrentlyRotateSpeed, -_shipStatusDataRepository.MaxRotateSpeed, _shipStatusDataRepository.MaxRotateSpeed);
+            return _shipStatusDataRepository.CurrentlyRotateSpeed * Time.deltaTime;
+        }
+
+        // 저항치를 적용
         private float ApplyResistance(float speed, float resistance)
         {
             if (Mathf.Abs(speed) <= resistance)

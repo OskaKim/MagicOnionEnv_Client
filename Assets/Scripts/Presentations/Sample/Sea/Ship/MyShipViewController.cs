@@ -1,6 +1,5 @@
 ﻿using System;
 using OskaKim.Logics.Sample.Sea;
-using UnityEngine;
 using VContainer;
 
 namespace OskaKim.Presentations.Sample.Sea.Ship
@@ -30,8 +29,11 @@ namespace OskaKim.Presentations.Sample.Sea.Ship
 
         public void Update()
         {
-            float moveDelta = _myShipLogic.MoveShip();
-            _view.Translate(Vector3.up * moveDelta);
+            var rotateAmount = _myShipLogic.CalcDeltaRotateAmount();
+            float moveDelta = _myShipLogic.CalcDeltaDistance();
+
+            _view.Rotate(rotateAmount);
+            _view.MoveForward(moveDelta);
         }
     }
 }
